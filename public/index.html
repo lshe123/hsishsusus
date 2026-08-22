@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>BestGifts</title>
+    <link rel="stylesheet" href="css/style.css?v=3.0.0">
+</head>
+<body>
+
+    <div id="banned-screen" class="banned-overlay hidden">
+        <div class="banned-container">
+            <span class="banned-icon">🚫</span>
+            <h1 class="banned-title">ДОСТУП ОГРАНИЧЕН</h1>
+            <p class="banned-text">Ваш аккаунт был временно или навсегда заблокирован администратором системы за нарушение игровых правил.</p>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="header-left">
+            <div class="logo-area">
+                <img src="/Images/Logo/logotip.png" alt="BestGifts" class="logo-img-header" onerror="this.src='https://img.icons8.com/color/96/gift.png';">
+                <span class="logo-text">BESTGIFTS</span>
+            </div>
+            <div class="user-profile-pill">
+                <img id="user-avatar" src="https://img.icons8.com/color/96/user.png" alt="Avatar" class="header-avatar">
+                <span id="user-username" class="header-username">Пользователь</span>
+            </div>
+        </div>
+        <div class="balance-area-wrapper">
+            <div class="balance-pill" id="balance-pill">
+                <span id="user-balance-pill-value">0.000</span>
+                <img src="/Images/Items/gram_popolnenie.png" alt="GRAM" class="balance-icon">
+            </div>
+            <div id="balance-badge-container" class="balance-badge-container"></div>
+        </div>
+    </header>
+
+    <section id="home-section" class="app-section">
+        <div class="welcome-banner">
+            <h2>Добро пожаловать в BestGifts!</h2>
+        </div>
+
+        <div class="game-promo-banner" id="game-arena-trigger">
+            <div class="game-info-side">
+                <h2 class="game-title">Best Arena</h2>
+            </div>
+            <div class="game-animation-side">
+                <div class="arena-box">
+                    <div class="ball-x-container">
+                        <div class="bouncing-ball"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">КЕЙСЫ</h2>
+        <div class="cases-grid-layout" id="banners-container">
+            <div class="case-card" id="daily-case-banner">
+                <div class="case-badge free">Бесплатно</div>
+                <div class="case-image-wrapper">
+                    <img src="/Images/Cases/freebox.png" onerror="this.src='https://img.icons8.com/color/96/gift.png';" alt="Ежедневный кейс">
+                </div>
+                <div class="case-info">
+                    <span class="case-name">Ежедневный кейс</span>
+                </div>
+            </div>
+
+            <div class="case-card" id="newbie-case-banner">
+                <div class="case-badge paid">0.1 GRAM</div>
+                <div class="case-image-wrapper">
+                    <img src="/Images/Cases/keysnovichka.png" onerror="this.src='https://img.icons8.com/color/96/gift.png';" alt="Кейс новичка">
+                </div>
+                <div class="case-info">
+                    <span class="case-name">Кейс новичка</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="case-section" class="app-section hidden">
+        <div class="case-open-header">
+            <button class="back-btn-square" id="back-to-home-button">
+                <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title-container">
+                <h1 id="case-page-main-title" class="case-title">Ежедневный кейс</h1>
+            </div>
+            <div style="width:46px;"></div>
+        </div>
+
+        <div class="roulette-viewport">
+            <div class="roulette-marker"></div>
+            <div class="roulette-track" id="roulette-track"></div>
+        </div>
+
+        <div class="spin-controls">
+            <button class="spin-btn" id="spin-case-button">Запустить</button>
+            <div id="timer-container" class="timer-box hidden">
+                Возвращайтесь через: <span id="daily-case-timer">24ч 00м 00с</span>
+            </div>
+        </div>
+
+        <div id="rewards-section-container" class="rewards-section">
+            <h3 id="rewards-grid-title" class="sub-title">🏆 Содержимое кейса</h3>
+            <div class="rewards-grid" id="rewards-grid"></div>
+        </div>
+    </section>
+
+    <section id="arena-section" class="app-section hidden">
+        <div class="case-open-header">
+            <button class="back-btn-square" id="back-to-home-from-arena">
+                <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title-container">
+                <h1 class="case-title">Best Arena</h1>
+            </div>
+            <div style="width:46px;"></div>
+        </div>
+
+        <div class="arena-game-container">
+            <div class="arena-big-box" id="arena-box-container">
+                <svg id="arena-svg-canvas" class="arena-canvas" viewBox="0 0 320 320" width="320" height="320"></svg>
+                <div class="arena-grid-overlay"></div>
+                <div class="arena-waiting-text" id="arena-status-text">Ждем ставки...</div>
+                <div class="arena-timer-circle hidden" id="arena-countdown-timer">15</div>
+                <div class="arena-avatars-overlay" id="arena-avatars-container"></div>
+                <svg id="arena-ball-svg" class="arena-ball-canvas" viewBox="0 0 320 320" width="320" height="320"></svg>
+            </div>
+
+            <div class="arena-game-footer">
+                <span class="arena-game-round">Игра #<span id="arena-round-number">0</span></span>
+            </div>
+
+            <div class="betting-row">
+                <button class="bet-edit-btn" id="bet-edit-trigger">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                </button>
+                <button class="bet-button active" id="bet-btn-1" data-bet="0.1"><span class="bet-val">0.1</span><img src="/Images/Items/gram_popolnenie.png" class="bet-coin-icon" alt="GRAM"></button>
+                <button class="bet-button active" id="bet-btn-2" data-bet="1.0"><span class="bet-val">1.0</span><img src="/Images/Items/gram_popolnenie.png" class="bet-coin-icon" alt="GRAM"></button>
+                <button class="bet-button active" id="bet-btn-3" data-bet="5.0"><span class="bet-val">5.0</span><img src="/Images/Items/gram_popolnenie.png" class="bet-coin-icon" alt="GRAM"></button>
+            </div>
+
+            <div class="arena-players-list-box">
+                <div class="players-list-title-row">
+                    <h3 class="players-list-title">👥 Список участников</h3>
+                    <div class="arena-players-count-badge">Игроки: <span id="arena-players-total">0</span></div>
+                </div>
+                <div id="arena-players-list" class="players-list-container">
+                    <div class="empty-list-placeholder">Ставок еще нет. Станьте первым!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="inventory-section" class="app-section hidden">
+        <div class="inventory-grid" id="inventory-grid"></div>
+        <div class="deposit-gift-box">
+            <div class="deposit-header-row">
+                <span class="deposit-box-icon">📥</span>
+                <h3>Ввод подарков NFT</h3>
+            </div>
+            <p class="deposit-gift-desc">1. Отправьте ваш NFT-подарок в Telegram на аккаунт:</p>
+            <button id="admin-tg-chat-trigger" class="telegram-send-btn"><span class="send-btn-icon">✈️</span> Отправить на @Sintopa</button>
+        </div>
+    </section>
+
+    <section id="rating-section" class="app-section hidden">
+        <div class="rating-header">
+            <h2>🏆 Таблица лидеров</h2>
+        </div>
+        <div class="leaderboard-list" id="leaderboard-list">
+            <div class="empty-rating-placeholder">Таблица лидеров пуста.</div>
+        </div>
+    </section>
+
+    <section id="balance-section" class="app-section hidden">
+        <div class="balance-header">
+            <button class="back-btn-square" id="back-to-home-from-balance">
+                <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <h2>💎 Мой Баланс</h2>
+        </div>
+        <div class="large-balance-card">
+            <span class="balance-card-label">ВАШ ТЕКУЩИЙ БАЛАНС</span>
+            <div class="balance-card-value">
+                <span id="large-balance-value">0.000</span>
+                <img src="/Images/Items/gram_popolnenie.png" alt="GRAM" class="large-balance-coin-icon">
+            </div>
+        </div>
+        <div class="wallet-actions-container">
+            <button id="connect-wallet-btn" class="connect-wallet-btn">Привязать кошелёк</button>
+            <button id="deposit-balance-btn" class="deposit-balance-btn" disabled>Пополнить баланс</button>
+        </div>
+    </section>
+
+    <div class="floating-nav-container">
+        <nav class="bottom-nav">
+            <button class="nav-tab" data-target="inventory"><span class="nav-svg-icon">🎒</span><span class="nav-label">ИНВЕНТАРЬ</span></button>
+            <button class="nav-tab active" data-target="home"><span class="nav-svg-icon">🏠</span><span class="nav-label">МЕНЮ</span></button>
+            <button class="nav-tab" data-target="rating"><span class="nav-svg-icon">🏆</span><span class="nav-label">РЕЙТИНГ</span></button>
+        </nav>
+    </div>
+
+    <div id="edit-bets-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <button class="modal-close-x" id="edit-bets-close-btn">&times;</button>
+            <h2 class="modal-title">Настройка ставок</h2>
+            <div class="modal-input-row">
+                <div class="bet-input-wrapper"><label>Кн. 1</label><input type="text" id="bet-input-1" class="modal-deposit-field"></div>
+                <div class="bet-input-wrapper"><label>Кн. 2</label><input type="text" id="bet-input-2" class="modal-deposit-field"></div>
+                <div class="bet-input-wrapper"><label>Кн. 3</label><input type="text" id="bet-input-3" class="modal-deposit-field"></div>
+            </div>
+            <button id="save-bets-btn" class="modal-btn modal-btn-primary" style="margin-top:20px;">Сохранить</button>
+        </div>
+    </div>
+
+    <div id="deposit-amount-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <button class="modal-close-x" id="deposit-modal-close-btn">&times;</button>
+            <h2 class="modal-title">Пополнение</h2>
+            <input type="text" id="modal-deposit-input" class="modal-deposit-field" placeholder="0.1">
+            <button id="modal-deposit-confirm-btn" class="modal-btn modal-btn-primary">Пополнить</button>
+        </div>
+    </div>
+
+    <div id="custom-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <button class="modal-close-x" id="modal-close-btn">&times;</button>
+            <div class="modal-icon" id="modal-icon">🎁</div>
+            <h2 class="modal-title" id="modal-title"></h2>
+            <p class="modal-message" id="modal-message"></p>
+            <div class="modal-actions" id="modal-actions"></div>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+    <script src="js/app.js?v=3.0.0" defer></script>
+</body>
+    </html>
